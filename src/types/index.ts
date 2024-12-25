@@ -39,6 +39,7 @@ export type TBlog = {
   id: string;
   order: number;
   title: string;
+  category: string;
   overview: string;
   description: string;
   image: string;

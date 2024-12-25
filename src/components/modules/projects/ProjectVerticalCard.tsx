@@ -6,52 +6,53 @@ import MotionElement from "../../motionDiv/MotionElement";
 
 type TProps = {
   project: TProject;
-  index: number;
+  index?: number;
 };
-export default function ProjectCart({ project, index }: TProps) {
+
+export default function ProjectVerticalCard({ project, index }: TProps) {
   return (
     <MotionElement
-      key={project?.id}
       initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      // transition={{ duration: 0.6, delay: index * 0.4 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="bg-white rounded-lg overflow-hidden shadow-lg"
+      className="bg-blue-50/40 rounded-lg overflow-hidden shadow-md flex p-2 "
     >
-      <div className="h-48">
+      <div className="w-1/3 h-60">
         <Image
           src={project?.image}
           alt={project?.title}
-          className="w-full h-full object-cover transition-transform duration-200 ease-in-out transform hover:scale-110 "
           width={1000}
           height={1000}
+          className="w-full h-full object-cover rounded-lg"
         />
       </div>
-      <div className="p-6">
-        <Link
-          className="sm:text-xl font-medium text-gray-900 hover:text-blue-600 duration-100"
-          href={`/projects/${project?.id}`}
-        >
-          {project?.title}
-        </Link>
-        <p className="text-gray-600 mb-4 line-clamp-2 mt-2 text-sm">
-          {project?.overview}
-        </p>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project?.tech.map((tech, i) => (
-            <small
-              key={i}
-              className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
-            >
-              {tech}
-            </small>
-          ))}
+      <div className="p-6 flex-1 flex flex-col justify-around">
+        <div>
+          <Link
+            className="sm:text-xl font-medium text-gray-900 hover:text-blue-600 duration-100"
+            href={`/projects/${project?.id}`}
+          >
+            {project?.title}
+          </Link>
+          <p className="text-sm sm:text-base text-gray-600 mt-2 mb-4 line-clamp-2 md:line-clamp-3">
+            {project?.overview}
+          </p>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project?.tech.map((tech, i) => (
+              <small
+                key={i}
+                className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+              >
+                {tech}
+              </small>
+            ))}
+          </div>
         </div>
-        <div className="flex gap-6 pt-3">
+        <div className="flex gap-6">
           <Link
             href={project?.live}
-            className="flex items-center gap-2 text-gray-700 hover:text-black"
+            className="flex items-center gap-2 text-blue-600 hover:underline"
             target="_blank"
           >
             <ExternalLink size={20} />
@@ -60,7 +61,7 @@ export default function ProjectCart({ project, index }: TProps) {
           {project?.github ? (
             <Link
               href={project?.github}
-              className="flex items-center gap-2 text-gray-700 hover:text-black"
+              className="flex items-center gap-2 text-gray-700 hover:underline"
               target="_blank"
             >
               <Github size={20} />
@@ -70,7 +71,7 @@ export default function ProjectCart({ project, index }: TProps) {
             <>
               <Link
                 href={project?.githubClient!}
-                className="flex items-center gap-2 text-gray-700 hover:text-black"
+                className="flex items-center gap-2 text-gray-700 hover:underline"
                 target="_blank"
               >
                 <Github size={20} />
@@ -78,7 +79,7 @@ export default function ProjectCart({ project, index }: TProps) {
               </Link>
               <Link
                 href={project?.githubServer!}
-                className="flex items-center gap-2 text-gray-700 hover:text-black"
+                className="flex items-center gap-2 text-gray-700 hover:underline"
                 target="_blank"
               >
                 <Github size={20} />

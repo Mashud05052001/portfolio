@@ -160,7 +160,18 @@ export const projects: TProject[] = [
     overview:
       "Plant Pals is a social media platform where users can share their gardening experiences and expertise.",
 
-    description: "",
+    description: `<div>
+  <h2>Exploring the World of Full-Stack Development</h2>
+  <p>
+    Dive into the exciting realm of full-stack development, where front-end meets back-end. Discover the latest tools,
+    technologies, and best practices that empower developers to build scalable and efficient web applications.
+  </p>
+  <p>
+    Learn how to combine intuitive UI/UX design with powerful server-side logic to create seamless user experiences.
+    Whether you are a beginner or an experienced developer, there’s something new to explore!
+  </p>
+</div>
+`,
     tech: ["NextJS", "Typescript", "Mongoose"],
     image:
       "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80",
@@ -203,10 +214,20 @@ export const blogs: TBlog[] = [
     id: "1",
     order: 1,
     title: "The Future of Web Development",
+    category: "Web Development",
     overview:
       "Explore the trends and technologies shaping the future of web development.",
-    description:
-      "Web development is rapidly evolving with new technologies and frameworks. This blog dives into the latest trends, including AI-driven development, the rise of WebAssembly, and the growing importance of Web3 applications.",
+    description: `<div>
+        <h1>Exploring the World of Full-Stack Development</h1>
+        <p>
+          Dive into the exciting realm of full-stack development, where front-end meets back-end. Discover the latest tools,
+          technologies, and best practices that empower developers to build scalable and efficient web applications.
+        </p>
+        <p>
+          Learn how to combine intuitive UI/UX design with powerful server-side logic to create seamless user experiences.
+          Whether you are a beginner or an experienced developer, there’s something new to explore!
+        </p>
+      </div>`,
     image:
       "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80",
   },
@@ -214,6 +235,7 @@ export const blogs: TBlog[] = [
     id: "2",
     order: 2,
     title: "Understanding TypeScript: A Beginner's Guide",
+    category: "TypeScript",
     overview:
       "Learn the basics of TypeScript and why developers are embracing it.",
     description:
@@ -225,6 +247,7 @@ export const blogs: TBlog[] = [
     id: "3",
     order: 3,
     title: "Top 10 JavaScript Libraries in 2024",
+    category: "JS Libraries",
     overview:
       "Discover the must-know JavaScript libraries to enhance your projects in 2024.",
     description:

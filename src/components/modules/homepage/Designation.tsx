@@ -1,8 +1,7 @@
 import { TClassName } from "@/src/types";
 import Image from "next/image";
-import MotionDiv from "../../motionDiv/MotionDiv";
-import ResumeButton from "./ResumeButton";
 import MotionElement from "../../motionDiv/MotionElement";
+import ResumeButton from "./ResumeButton";
 
 export default function Designation({ className }: TClassName) {
   return (

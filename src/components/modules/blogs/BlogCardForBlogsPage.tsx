@@ -9,19 +9,17 @@ type TProps = {
   index?: number;
 };
 
-export const BlogCard = ({ blog, index }: TProps) => {
+export const BlogCardForBlogsPage = ({ blog, index }: TProps) => {
   return (
     <MotionElement
-      key={blog?.id}
       initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      // transition={{ duration: 0.6, delay: index * 0.4 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
       className="bg-white rounded-lg overflow-hidden shadow-lg"
     >
       <div className="bg-white border border-gray-200 rounded-lg overflow-hidden flex">
-        <div className="w-1/3 h-full">
+        <div className="w-1/3 h-60">
           <Image
             src={blog?.image}
             alt={blog?.title}
@@ -35,7 +33,7 @@ export const BlogCard = ({ blog, index }: TProps) => {
             <h3 className="sm:text-xl font-medium text-gray-900 mb-2">
               {blog?.title}
             </h3>
-            <p className="text-sm sm:text-base text-gray-600 mb-4 line-clamp-2 md:line-clamp-3">
+            <p className="text-sm sm:text-base text-gray-600 mb-4 line-clamp-2 md:line-clamp-3 lg:line-clamp-4">
               {blog?.overview}
             </p>
             <p className="text-sm sm:text-base text-gray-600 mb-4 line-clamp-2 md:line-clamp-3">
