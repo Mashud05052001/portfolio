@@ -14,7 +14,7 @@ export default function ContactForm() {
     console.log(data);
   };
   return (
-    <div className="max-w-2xl mx-auto mt-10 border py-8 px-8 rounded-lg shadow-md">
+    <div className="max-w-2xl mx-auto mt-10 border py-8 px-8 rounded-lg shadow-md dark:border-gray-700">
       <MotionElement
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -31,12 +31,23 @@ export default function ContactForm() {
             name="name"
             label="Name"
             type="text"
-            variant="underlined"
             size="lg"
+            className="text-gray-800 dark:text-white dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400"
           />
-          <PInput name="email" label="Email" type="email" size="lg" />
+          <PInput
+            name="email"
+            label="Email"
+            type="email"
+            size="lg"
+            className="text-gray-800 dark:text-white dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400"
+          />
           <div className="sm:col-span-2">
-            <PTextarea name="message" label="Enter Your Message" size="lg" />
+            <PTextarea
+              name="message"
+              label="Enter Your Message"
+              size="lg"
+              className="text-gray-800 dark:text-white dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400"
+            />
           </div>
           <button
             type="submit"

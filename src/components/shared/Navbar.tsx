@@ -13,6 +13,7 @@ import {
 import { useState } from "react";
 import { ThemeSwitch } from "../theme-switch";
 import NavLink from "./NavLink";
+import MotionDiv from "../motionDiv/MotionDiv";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,35 +26,64 @@ export const Navbar = () => {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
+      className="dark:bg-gray-800/50 dark:border-b-gray-900"
     >
-      <div className="flex items-center w-full justify-between ">
-        <div>
+      <div className="flex items-center w-full justify-between">
+        <MotionDiv
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <NavbarBrand as="li" className="gap-3 max-w-fit">
             <NavLink className="flex justify-start items-center" href="/">
-              {/* <p className="font-bold -ml-2.5 -mb-1.5"> */}
               <p className="font-bold">
-                <span className="text-3xl text-common-500">Mashud</span>
+                <span className="text-3xl text-common-500 dark:text-common-200">
+                  Mashud
+                </span>
               </p>
             </NavLink>
           </NavbarBrand>
-        </div>
+        </MotionDiv>
         <div>
           <ul className="hidden md:flex gap-2 sm:gap-4 justify-start">
-            {navItems.map((item) => (
-              <NavbarItem key={item.href}>
-                <NavLink href={item.href} className="px-1 py-1">
-                  {item.label}
-                </NavLink>
-              </NavbarItem>
+            {navItems.map((item, index) => (
+              <MotionDiv
+                key={item?.href}
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+              >
+                <NavbarItem>
+                  <NavLink
+                    href={item.href}
+                    className="px-1 py-1 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400"
+                  >
+                    {item.label}
+                  </NavLink>
+                </NavbarItem>
+              </MotionDiv>
             ))}
-            <ThemeSwitch />
+            <MotionDiv
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+            >
+              <ThemeSwitch />
+            </MotionDiv>
           </ul>
         </div>
       </div>
 
       <NavbarContent className="md:hidden basis-1 pl-4 space-x-2" justify="end">
-        <ThemeSwitch />
-        <NavbarMenuToggle />
+        <MotionDiv
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <ThemeSwitch />
+          <NavbarMenuToggle />
+        </MotionDiv>
       </NavbarContent>
 
       {/* Toggle bar for small screen */}
@@ -63,10 +93,8 @@ export const Navbar = () => {
             <NavLink
               key={item.href}
               href={item.href}
-              className="pl-4 py-2 rounded-md w-52 hover:bg-common-50  duration-150 dark:hover:bg-gray-700"
-              onClick={() => {
-                setIsMenuOpen(false);
-              }}
+              className="pl-4 py-2 rounded-md w-52 hover:bg-common-50 dark:hover:bg-gray-700 duration-150"
+              onClick={() => setIsMenuOpen(false)}
             >
               {item.label}
             </NavLink>

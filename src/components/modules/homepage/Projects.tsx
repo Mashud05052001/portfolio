@@ -17,7 +17,7 @@ export default function Projects({ className }: TClassName) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-16"
+          className="text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white"
         >
           Featured Projects
         </MotionElement>
@@ -27,6 +27,7 @@ export default function Projects({ className }: TClassName) {
             <ProjectCart index={index} project={project} key={index} />
           ))}
         </div>
+
         <div className="mt-16 flex justify-center">
           <Link href="/projects">
             <CommonButton buttonText="View All Projects" className="" />

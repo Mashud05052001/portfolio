@@ -1,5 +1,4 @@
 import { Code2, Palette, Terminal } from "lucide-react";
-import MotionDiv from "../../motionDiv/MotionDiv";
 import MotionElement from "../../motionDiv/MotionElement";
 
 export default function AboutMe({ className }: { className?: string }) {
@@ -22,7 +21,10 @@ export default function AboutMe({ className }: { className?: string }) {
   ];
 
   return (
-    <div className={` ${className}`} id="about-me">
+    <div
+      className={`${className} dark:bg-gray-800 dark:text-white`}
+      id="about-me"
+    >
       <div className="container mx-auto px-4">
         <MotionElement
           initial={{ opacity: 0, y: 20 }}
@@ -31,8 +33,10 @@ export default function AboutMe({ className }: { className?: string }) {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-6 text-gray-800">About Me</h2>
-          <p className="text-lg text-gray-600">
+          <h2 className="text-4xl font-bold mb-6 text-gray-800 dark:text-white">
+            About Me
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300">
             I’m Mashudur Rahman Mahi, a Full Stack Developer passionate about
             creating seamless, high-performance web applications. With attention
             to detail and a focus on scalable solutions, I deliver exceptional
@@ -52,15 +56,17 @@ export default function AboutMe({ className }: { className?: string }) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="p-6  rounded-md hover:shadow-lg border transition-shadow duration-300"
+              className="p-6 rounded-md hover:shadow-lg border transition-shadow duration-300 dark:border-gray-800 dark:bg-gray-900 dark:hover:bg-gray-800 cursor-pointer"
             >
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto dark:bg-blue-700">
                 {skill.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-center">
+              <h3 className="text-xl font-semibold mb-2 text-center text-gray-800 dark:text-white">
                 {skill.title}
               </h3>
-              <p className="text-gray-600 text-center">{skill.description}</p>
+              <p className="text-gray-600 text-center dark:text-gray-400">
+                {skill.description}
+              </p>
             </MotionElement>
           ))}
         </div>

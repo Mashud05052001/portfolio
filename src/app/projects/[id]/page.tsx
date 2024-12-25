@@ -1,4 +1,4 @@
-import { blogs, projects } from "@/src/components/data";
+import { projects } from "@/src/components/data";
 import ProjectNotFound from "@/src/components/modules/projects/ProjectNotFound";
 import MotionElement from "@/src/components/motionDiv/MotionElement";
 import HtmlDescription from "@/src/components/shared/HtmlDescription";

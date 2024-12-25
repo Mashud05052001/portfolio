@@ -26,7 +26,10 @@ const educationData = [
 export default function Education({ className }: TClassName) {
   educationData.sort((a, b) => a.order - b.order);
   return (
-    <div className={`py-24  ${className}`}>
+    <div
+      className={`py-24 ${className} dark:bg-gray-800 dark:text-white`}
+      id="education"
+    >
       <div className="container mx-auto px-4">
         <MotionElement
           initial={{ opacity: 0, y: 20 }}
@@ -35,8 +38,10 @@ export default function Education({ className }: TClassName) {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4">Education</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold mb-4 text-gray-800 dark:text-white">
+            Education
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto dark:text-gray-300">
             My academic journey and professional certifications
           </p>
         </MotionElement>

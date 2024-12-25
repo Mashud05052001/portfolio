@@ -39,7 +39,8 @@ export default function RootLayout({
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
+          fontSans.variable,
+          "dark:bg-gray-800 dark:text-white"
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
@@ -50,7 +51,7 @@ export default function RootLayout({
             </main>
             <ScrollToTop />
             <footer className="text-center py-3">
-              © 2024 All Rights Reserve to Mashudur Rahman
+              © 2024 All Rights Reserved to Mashudur Rahman
             </footer>
           </div>
         </Providers>

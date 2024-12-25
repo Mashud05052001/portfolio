@@ -9,6 +9,7 @@ type TProps = {
   size?: "sm" | "md" | "lg";
   defaultValue?: string;
   rows?: number;
+  className?: string;
 };
 
 export default function PTextarea({
@@ -18,6 +19,7 @@ export default function PTextarea({
   size = "md",
   defaultValue = "",
   rows = 3,
+  className,
 }: TProps) {
   return (
     <Controller
@@ -36,6 +38,7 @@ export default function PTextarea({
             label={label}
             variant={variant}
             minRows={rows}
+            className={className}
           />
           {error && (
             <div className="absolute left-1 bottom-[-1.4rem] text-red-500 whitespace-nowrap overflow-hidden text-sm font-medium text-ellipsis">
