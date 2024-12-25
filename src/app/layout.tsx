@@ -42,13 +42,16 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col h-screen">
+        <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
+          <div className="relative flex flex-col min-h-screen">
             <Navbar />
             <main className="container mx-auto max-w-7xl flex-grow">
               {children}
             </main>
             <ScrollToTop />
+            <footer className="text-center py-3">
+              © 2024 All Rights Reserve to Mashudur Rahman
+            </footer>
           </div>
         </Providers>
       </body>

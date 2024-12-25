@@ -10,11 +10,9 @@ import {
   NavbarMenuToggle,
   Navbar as NextUINavbar,
 } from "@nextui-org/navbar";
-import Link from "next/link";
 import { useState } from "react";
-import { LuLogIn } from "react-icons/lu";
-import NavLink from "./NavLink";
 import { ThemeSwitch } from "../theme-switch";
+import NavLink from "./NavLink";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,7 +21,7 @@ export const Navbar = () => {
   return (
     <NextUINavbar
       maxWidth="xl"
-      shouldHideOnScroll
+      shouldHideOnScroll={false}
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}

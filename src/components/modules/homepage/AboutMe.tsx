@@ -1,8 +1,8 @@
-"use client";
-import { motion } from "framer-motion";
 import { Code2, Palette, Terminal } from "lucide-react";
+import MotionDiv from "../../motionDiv/MotionDiv";
+import MotionElement from "../../motionDiv/MotionElement";
 
-export default function AboutMe() {
+export default function AboutMe({ className }: { className?: string }) {
   const skills = [
     {
       icon: <Code2 className="w-6 h-6" />,
@@ -22,9 +22,9 @@ export default function AboutMe() {
   ];
 
   return (
-    <div className="bg-white" id="about-me">
+    <div className={` ${className}`} id="about-me">
       <div className="container mx-auto px-4">
-        <motion.div
+        <MotionElement
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -42,17 +42,17 @@ export default function AboutMe() {
             development, bridging innovation with practicality for impactful
             solutions.
           </p>
-        </motion.div>
+        </MotionElement>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-12">
           {skills.map((skill, index) => (
-            <motion.div
+            <MotionElement
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="p-6 bg-gray-50 rounded-lg"
+              className="p-6  rounded-md hover:shadow-lg border transition-shadow duration-300"
             >
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
                 {skill.icon}
@@ -61,7 +61,7 @@ export default function AboutMe() {
                 {skill.title}
               </h3>
               <p className="text-gray-600 text-center">{skill.description}</p>
-            </motion.div>
+            </MotionElement>
           ))}
         </div>
       </div>
