@@ -20,13 +20,14 @@ export default async function SingleProject({ params }: TProps) {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 ">
       {/* Project Image with Title and Category Overlay */}
-      <div className="relative h-64 w-full mb-6">
+      <div className="relative h-64 md:h-96 w-full mb-6">
         <Image
           src={projectData?.image}
           alt={projectData?.title}
           className="object-cover w-full h-full rounded-lg"
           layout="fill"
         />
+        {/* Title */}
         <div className="absolute inset-0 bg-black bg-opacity-50 text-center text-white px-4">
           <div className="absolute bottom-10 left-4 text-start">
             <h1 className="text-3xl md:text-4xl font-bold">
@@ -56,7 +57,7 @@ export default async function SingleProject({ params }: TProps) {
       </div>
 
       {/* Project Overview */}
-      <div className="text-lg text-gray-700 mb-4">
+      <div className="text-lg text-gray-700 mb-4 dark:text-gray-300 mt-2">
         Overview:
         <strong className="pl-2">{projectData?.overview}</strong>
       </div>
@@ -69,7 +70,7 @@ export default async function SingleProject({ params }: TProps) {
             {projectData?.tech.map((tech, index) => (
               <span
                 key={index}
-                className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+                className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-white"
               >
                 {tech}
               </span>
@@ -83,40 +84,29 @@ export default async function SingleProject({ params }: TProps) {
           <div className="flex gap-6 pl-2 sm:pl-0">
             <Link
               href={projectData?.live}
-              className="flex items-center gap-2 text-gray-700 hover:text-black"
+              className="flex items-center gap-2 text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white"
               target="_blank"
             >
               <ExternalLink size={20} />
               <small>Live Demo</small>
             </Link>
-            {projectData?.github ? (
+            <Link
+              href={projectData?.githubClient}
+              className="flex items-center gap-2 text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white"
+              target="_blank"
+            >
+              <Github size={20} />
+              <small>{projectData?.githubServer ? "Client" : "Code"}</small>
+            </Link>
+            {projectData?.githubServer && (
               <Link
-                href={projectData?.github}
-                className="flex items-center gap-2 text-gray-700 hover:text-black"
+                href={projectData?.githubServer!}
+                className="flex items-center gap-2 text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white"
                 target="_blank"
               >
                 <Github size={20} />
-                <small>Code</small>
+                <small>Server</small>
               </Link>
-            ) : (
-              <>
-                <Link
-                  href={projectData?.githubClient!}
-                  className="flex items-center gap-2 text-gray-700 hover:text-black"
-                  target="_blank"
-                >
-                  <Github size={20} />
-                  <small>Client</small>
-                </Link>
-                <Link
-                  href={projectData?.githubServer!}
-                  className="flex items-center gap-2 text-gray-700 hover:text-black"
-                  target="_blank"
-                >
-                  <Github size={20} />
-                  <small>Server</small>
-                </Link>
-              </>
             )}
           </div>
         </div>

@@ -16,32 +16,33 @@ export const BlogCardForBlogsPage = ({ blog, index }: TProps) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="bg-white rounded-lg overflow-hidden shadow-lg"
+      className="rounded-lg overflow-hidden shadow-lg"
     >
-      <div className="bg-white border border-gray-200 rounded-lg overflow-hidden flex">
+      <div className="border light:border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden p-2 flex">
         <div className="w-1/3 h-60">
           <Image
             src={blog?.image}
             alt={blog?.title}
             width={1000}
             height={1000}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover rounded-lg"
           />
         </div>
         <div className="p-6 flex-1 flex flex-col justify-around">
           <div>
-            <h3 className="sm:text-xl font-medium text-gray-900 mb-2">
+            <h3 className="sm:text-xl font-medium light:text-gray-900 duration-100 mb-3">
               {blog?.title}
             </h3>
-            <p className="text-sm sm:text-base text-gray-600 mb-4 line-clamp-2 md:line-clamp-3 lg:line-clamp-4">
+            <p className="text-sm sm:text-base light:text-gray-600 dark:text-gray-200 mb-4 line-clamp-2 md:line-clamp-3 lg:line-clamp-4">
               {blog?.overview}
             </p>
-            <p className="text-sm sm:text-base text-gray-600 mb-4 line-clamp-2 md:line-clamp-3">
-              Category : <strong>{blog?.category}</strong>
+            <p className="text-sm sm:text-base light:text-gray-600 dark:text-gray-200 mb-4 line-clamp-2 md:line-clamp-3">
+              <span className="dark:text-gray-300 mr-2">Category :</span>
+              <strong>{blog?.category}</strong>
             </p>
           </div>
           <Link
-            className="flex items-center text-blue-600"
+            className="flex items-center hover:underline"
             href={`/blogs/${blog?.id}`}
           >
             <span className="mr-2 text-sm sm:text-base">Read more</span>

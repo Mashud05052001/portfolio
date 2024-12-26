@@ -17,7 +17,7 @@ export default function ProjectCart({ project }: TProps) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg dark:shadow-md dark:shadow-gray-700"
+      className=" rounded-lg overflow-hidden shadow-lg dark:shadow-md dark:shadow-slate-700"
     >
       <div className="h-48">
         <Image
@@ -42,7 +42,7 @@ export default function ProjectCart({ project }: TProps) {
           {project?.tech.map((tech, i) => (
             <small
               key={i}
-              className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-700 dark:text-blue-200"
+              className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-white"
             >
               {tech}
             </small>
@@ -57,34 +57,23 @@ export default function ProjectCart({ project }: TProps) {
             <ExternalLink size={20} />
             <small>Live Demo</small>
           </Link>
-          {project?.github ? (
+          <Link
+            href={project?.githubClient}
+            className="flex items-center gap-2 text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white"
+            target="_blank"
+          >
+            <Github size={20} />
+            <small>{project?.githubServer ? "Client" : "Code"}</small>
+          </Link>
+          {project?.githubServer && (
             <Link
-              href={project?.github}
+              href={project?.githubServer!}
               className="flex items-center gap-2 text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white"
               target="_blank"
             >
               <Github size={20} />
-              <small>Code</small>
+              <small>Server</small>
             </Link>
-          ) : (
-            <>
-              <Link
-                href={project?.githubClient!}
-                className="flex items-center gap-2 text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white"
-                target="_blank"
-              >
-                <Github size={20} />
-                <small>Client</small>
-              </Link>
-              <Link
-                href={project?.githubServer!}
-                className="flex items-center gap-2 text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white"
-                target="_blank"
-              >
-                <Github size={20} />
-                <small>Server</small>
-              </Link>
-            </>
           )}
         </div>
       </div>

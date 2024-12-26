@@ -19,7 +19,7 @@ export default function Page() {
           <div className="relative">
             <Link
               href={"/#blogs"}
-              className="text-blue-600 hover:underline absolute flex items-center gap-x-2 -top-0.5 px-3 py-2 "
+              className="light:text-blue-600  hover:underline absolute flex items-center gap-x-2 -top-0.5 px-3 py-2"
             >
               <UndoDot size={30} />
               <p className="font-medium">Back to Portfolio</p>

@@ -21,10 +21,7 @@ export default function AboutMe({ className }: { className?: string }) {
   ];
 
   return (
-    <div
-      className={`${className} dark:bg-gray-800 dark:text-white`}
-      id="about-me"
-    >
+    <div className={`${className} `} id="about-me">
       <div className="container mx-auto px-4">
         <MotionElement
           initial={{ opacity: 0, y: 20 }}
@@ -56,7 +53,7 @@ export default function AboutMe({ className }: { className?: string }) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="p-6 rounded-md hover:shadow-lg border transition-shadow duration-300 dark:border-gray-800 dark:bg-gray-900 dark:hover:bg-gray-800 cursor-pointer"
+              className="p-6 rounded-md hover:shadow-lg border transition-shadow duration-300 dark:border-gray-800 dark:bg-slate-800/80 dark:hover:bg-slate-800/60 cursor-pointer"
             >
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto dark:bg-blue-700">
                 {skill.icon}

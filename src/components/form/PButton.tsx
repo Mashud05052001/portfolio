@@ -17,7 +17,7 @@ type TProps = {
   onClick?: () => void;
 };
 
-export default function OdButton({
+export default function PButton({
   color = "success",
   buttonText = "Submit",
   buttonType = "submit",

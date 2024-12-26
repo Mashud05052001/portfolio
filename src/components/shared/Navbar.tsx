@@ -1,7 +1,8 @@
 "use client";
 
 import { siteConfig } from "@/src/config/site";
-
+import websiteLogo from "../../../public/logo.png";
+import websiteLogo1 from "../../../public/logo1.png";
 import {
   NavbarBrand,
   NavbarContent,
@@ -14,6 +15,8 @@ import { useState } from "react";
 import { ThemeSwitch } from "../theme-switch";
 import NavLink from "./NavLink";
 import MotionDiv from "../motionDiv/MotionDiv";
+import Image from "next/image";
+import NavbarLogo from "./NavbarLogo";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,7 +29,7 @@ export const Navbar = () => {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="dark:bg-gray-800/50 dark:border-b-gray-900"
+      className="dark:bg-slate-800/80 dark:border-b-gray-900"
     >
       <div className="flex items-center w-full justify-between">
         <MotionDiv
@@ -34,15 +37,22 @@ export const Navbar = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <NavbarBrand as="li" className="gap-3 max-w-fit">
+          <NavbarLogo />
+          {/* <NavbarBrand as="li" className="gap-3 max-w-fit">
             <NavLink className="flex justify-start items-center" href="/">
               <p className="font-bold">
                 <span className="text-3xl text-common-500 dark:text-common-200">
-                  Mashud
+                  <Image
+                    src={websiteLogo}
+                    alt="Logo"
+                    width={100}
+                    height={100}
+                    className="w-14 h-14 rounded-full "
+                  />
                 </span>
               </p>
             </NavLink>
-          </NavbarBrand>
+          </NavbarBrand> */}
         </MotionDiv>
         <div>
           <ul className="hidden md:flex gap-2 sm:gap-4 justify-start">
@@ -51,7 +61,7 @@ export const Navbar = () => {
                 key={item?.href}
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
                 viewport={{ once: true }}
               >
                 <NavbarItem>
@@ -67,7 +77,7 @@ export const Navbar = () => {
             <MotionDiv
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
             >
               <ThemeSwitch />
             </MotionDiv>

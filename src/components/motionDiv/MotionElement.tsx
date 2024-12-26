@@ -1,6 +1,6 @@
 "use client";
 import { motion, MotionProps } from "framer-motion";
-import React from "react";
+import React, { MouseEventHandler } from "react";
 
 type MotionElements = keyof typeof motion;
 
@@ -11,6 +11,7 @@ interface TProps extends MotionProps {
   index?: number | string;
   as?: MotionElements;
   href?: string;
+  onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
 }
 
 const MotionElement: React.FC<TProps> = ({
@@ -26,6 +27,7 @@ const MotionElement: React.FC<TProps> = ({
   index,
   whileHover,
   href,
+  onClick,
 }) => {
   const Element = motion[as] as React.ElementType;
 
@@ -41,6 +43,7 @@ const MotionElement: React.FC<TProps> = ({
       style={style}
       className={className}
       href={href}
+      onClick={onClick}
     >
       {children}
     </Element>

@@ -1,7 +1,10 @@
 import { blogs } from "@/src/components/data";
 import BlogNotFound from "@/src/components/modules/blogs/BlogNotFound";
+import MotionElement from "@/src/components/motionDiv/MotionElement";
 import HtmlDescription from "@/src/components/shared/HtmlDescription";
+import { UndoDot } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 type TProps = {
   params: { id: string };
@@ -15,14 +18,14 @@ export default async function SingleBlog({ params }: TProps) {
     return <BlogNotFound />;
   }
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="max-w-4xl mx-auto px-4 py-8 ">
       {/* Image Section */}
-      <div className="relative h-64 md:h-96 overflow-hidden rounded-lg shadow-lg">
+      <div className="relative h-64 md:h-96 w-full mb-6">
         <Image
           src={blogData?.image}
           alt={blogData?.title}
           fill
-          className="w-full h-full object-cover"
+          className="object-cover w-full h-full rounded-lg"
         />
         {/* Title and Category */}
         <div className="absolute inset-0 bg-black bg-opacity-50 text-center text-white px-4">
@@ -30,17 +33,39 @@ export default async function SingleBlog({ params }: TProps) {
             <h1 className="text-3xl md:text-4xl font-bold">
               {blogData?.title}
             </h1>
-            <p className="text-sm md:text-base mt-2 px-2 bg-blue-600 rounded-full inline-block">
+            <p className="text-sm md:text-base mt-2 px-4 bg-blue-600 rounded-full inline-block">
               {blogData?.category}
             </p>
           </div>
         </div>
+
+        <MotionElement
+          as="h2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="absolute top-4 left-4"
+        >
+          <div className="relative">
+            <Link
+              href={"/blogs"}
+              className="text-white bg-black/40 rounded-md hover:underline absolute flex items-center gap-x-2 -top-0.5 px-3 py-2 "
+            >
+              <UndoDot size={30} />
+              Back
+            </Link>
+          </div>
+        </MotionElement>
       </div>
 
       {/* Content Section */}
       <section className="mt-8">
         {/* Overview */}
-        <p className="text-gray-700 text-lg mb-6">{blogData?.overview}</p>
+        <div className="text-lg text-gray-700 mb-4 dark:text-gray-300 mt-2">
+          Overview:
+          <strong className="pl-2">{blogData?.overview}</strong>
+        </div>
 
         {/* Description */}
         <HtmlDescription description={blogData?.description} />

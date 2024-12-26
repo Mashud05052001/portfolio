@@ -30,8 +30,7 @@ export type TProject = {
   tech: string[];
   image: string | StaticImageData;
   live: string;
-  github?: string;
-  githubClient?: string;
+  githubClient: string;
   githubServer?: string;
 };
 

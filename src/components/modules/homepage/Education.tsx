@@ -26,10 +26,7 @@ const educationData = [
 export default function Education({ className }: TClassName) {
   educationData.sort((a, b) => a.order - b.order);
   return (
-    <div
-      className={`py-24 ${className} dark:bg-gray-800 dark:text-white`}
-      id="education"
-    >
+    <div className={`py-24 ${className} `} id="education">
       <div className="container mx-auto px-4">
         <MotionElement
           initial={{ opacity: 0, y: 20 }}

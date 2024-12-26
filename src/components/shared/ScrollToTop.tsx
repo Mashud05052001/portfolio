@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowBigUp } from "lucide-react";
+import { ArrowBigUp, Scale } from "lucide-react";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -31,7 +31,7 @@ export default function ScrollToTop() {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed bottom-10 right-10  text-blue-600 border-[3px] border-blue-600 rounded-full p-2 cursor-pointer shadow-lg"
+          className="fixed bottom-10 right-10  text-blue-600 border-[3px] border-blue-600 dark:text-white dark:border-white rounded-full p-2 cursor-pointer shadow-lg"
           onClick={scrollToTop}
           initial={{ opacity: 0, scale: 0.1 }}
           animate={{ opacity: 1, scale: 1 }}

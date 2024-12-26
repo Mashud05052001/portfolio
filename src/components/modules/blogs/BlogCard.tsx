@@ -17,9 +17,9 @@ export const BlogCard = ({ blog, index }: TProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg dark:shadow-md dark:shadow-gray-700"
+      className="rounded-lg overflow-hidden shadow-lg dark:shadow-md dark:shadow-slate-700"
     >
-      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden flex">
+      <div className=" border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden flex">
         <div className="w-1/3 h-full">
           <Image
             src={blog?.image}
@@ -29,7 +29,7 @@ export const BlogCard = ({ blog, index }: TProps) => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="p-6 flex-1 flex flex-col justify-around">
+        <div className="p-6 flex-1 flex flex-col justify-around ">
           <div>
             <h3 className="sm:text-xl font-medium text-gray-900 dark:text-white mb-2">
               {blog?.title}

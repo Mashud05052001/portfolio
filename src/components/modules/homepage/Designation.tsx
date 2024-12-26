@@ -2,11 +2,12 @@ import { TClassName } from "@/src/types";
 import Image from "next/image";
 import MotionElement from "../../motionDiv/MotionElement";
 import ResumeButton from "./ResumeButton";
+import myPicture from "../../../assets/myPicture.jpg";
 
 export default function Designation({ className }: TClassName) {
   return (
     <div
-      className={`min-h-[calc(100vh-65px)] flex items-center ${className} dark:bg-gray-800 dark:text-white`}
+      className={`min-h-[calc(100vh-65px)] flex items-center ${className} `}
       id="home"
     >
       <div className="container mx-auto px-4 py-16">
@@ -37,9 +38,10 @@ export default function Designation({ className }: TClassName) {
           >
             <div className="rounded-lg overflow-hidden shadow-2xl relative w-96 h-96">
               <Image
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80"
+                // src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80"
+                src={myPicture}
                 alt="Profile"
-                className="object-cover"
+                className="object-fill"
                 fill
               />
             </div>

@@ -3,6 +3,8 @@ import { TClassName } from "@/src/types";
 import { Github, Linkedin } from "lucide-react";
 import MotionElement from "../../motionDiv/MotionElement";
 import ContactForm from "./ContactForm";
+import { siteConfig } from "@/src/config/site";
+import ContactButtons from "./ContactButtons";
 
 export default function Contact({ className }: TClassName) {
   return (
@@ -22,26 +24,7 @@ export default function Contact({ className }: TClassName) {
             I&apos;m always open to discussing new projects, creative ideas, or
             opportunities to be part of your visions.
           </p>
-          <div className="flex justify-center items-center space-x-6">
-            <MotionElement
-              as="a"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              href="https://github.com/Mashud05052001"
-              className="p-3 bg-gray-800 text-white rounded-full shadow-lg hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 transition-transform duration-300"
-            >
-              <Github size={28} />
-            </MotionElement>
-            <MotionElement
-              as="a"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.1 }}
-              href="https://linkedin.com"
-              className="p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-500 dark:bg-blue-600 dark:hover:bg-blue-500 transition-transform duration-300"
-            >
-              <Linkedin size={28} />
-            </MotionElement>
-          </div>
+          <ContactButtons />
         </MotionElement>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 max-w-4xl mx-auto">
@@ -54,7 +37,7 @@ export default function Contact({ className }: TClassName) {
               viewport={{ once: true }}
               className="text-center"
             >
-              <div className="hover:shadow-lg px-4 py-6 border rounded-md transition-shadow duration-300 dark:border-gray-700">
+              <div className="hover:shadow-lg px-4 py-6 border rounded-md transition-shadow duration-300 dark:border-gray-700 dark:bg-slate-800/80 dark:hover:bg-slate-800/60">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto dark:bg-blue-700">
                   <Info.icon className="w-6 h-6 text-blue-500 dark:text-white" />
                 </div>
