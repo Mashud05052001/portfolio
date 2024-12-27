@@ -1,10 +1,9 @@
+import envConfig from "@/src/config/envConfig";
 import { TBlog, TClassName, TReturnWithMetaData } from "@/src/types";
 import Link from "next/link";
-import { blogs } from "../../data";
 import MotionElement from "../../motionDiv/MotionElement";
 import CommonButton from "../../shared/CommonButton";
 import { BlogCard } from "../blogs/BlogCard";
-import envConfig from "@/src/config/envConfig";
 
 export default async function Blogs({ className }: TClassName) {
   const response = await fetch(
@@ -15,7 +14,6 @@ export default async function Blogs({ className }: TClassName) {
   );
   const allBlogsData = (await response.json()) as TReturnWithMetaData<TBlog[]>;
   const allBlogs = allBlogsData?.data?.data;
-  blogs.sort((a, b) => a.order - b.order);
 
   return (
     <section className={`py-24 ${className}`} id="blogs">

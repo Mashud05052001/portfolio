@@ -1,13 +1,12 @@
-import { blogs } from "@/src/components/data";
 import BlogNotFound from "@/src/components/modules/blogs/BlogNotFound";
 import MotionElement from "@/src/components/motionDiv/MotionElement";
 import HtmlDescription from "@/src/components/shared/HtmlDescription";
+import envConfig from "@/src/config/envConfig";
+import { TBlog, TReturnData } from "@/src/types";
 import { UndoDot } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { PageProps } from "../../../../.next/types/app/page";
-import envConfig from "@/src/config/envConfig";
-import { TBlog, TReturnData } from "@/src/types";
 
 export default async function SingleBlog({ params }: PageProps) {
   const { id: blogId } = await params;

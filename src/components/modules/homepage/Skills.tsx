@@ -11,8 +11,10 @@ export default async function Skills({ className }: TClassName) {
   const allSkillsData = (await response.json()) as TReturnWithMetaData<
     TSkillData[]
   >;
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const allSkills = allSkillsData?.data?.data;
-  console.log(allSkills);
+
   const skillsData = skills;
   return (
     <section className={`py-24 ${className}`} id="skills">
@@ -31,7 +33,7 @@ export default async function Skills({ className }: TClassName) {
 
         <div className="flex flex-wrap gap-3">
           {skillsData
-            .sort((a, b) => a.order - b.order)
+            .sort((a, b) => a?.order! - b?.order!)
             .map((Skill) => (
               <MotionElement
                 key={Skill?.order}

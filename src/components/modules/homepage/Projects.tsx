@@ -1,10 +1,9 @@
+import envConfig from "@/src/config/envConfig";
 import { TClassName, TProject, TReturnWithMetaData } from "@/src/types";
 import Link from "next/link";
-import { projects } from "../../data";
 import MotionElement from "../../motionDiv/MotionElement";
 import CommonButton from "../../shared/CommonButton";
 import ProjectCart from "../projects/ProjectCart";
-import envConfig from "@/src/config/envConfig";
 
 export default async function Projects({ className }: TClassName) {
   const response = await fetch(
