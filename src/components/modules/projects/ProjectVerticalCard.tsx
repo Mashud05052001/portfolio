@@ -9,7 +9,7 @@ type TProps = {
   index?: number;
 };
 
-export default function ProjectVerticalCard({ project, index }: TProps) {
+export default function ProjectVerticalCard({ project }: TProps) {
   return (
     <MotionElement
       initial={{ opacity: 0, y: 20 }}
@@ -31,7 +31,7 @@ export default function ProjectVerticalCard({ project, index }: TProps) {
         <div>
           <Link
             className="sm:text-xl font-medium light:text-gray-900 hover:text-blue-600 duration-100"
-            href={`/projects/${project?.id}`}
+            href={`/projects/${project?._id}`}
           >
             {project?.title}
           </Link>

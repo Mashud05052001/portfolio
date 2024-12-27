@@ -1,13 +1,23 @@
-import { TClassName } from "@/src/types";
+import { TClassName, TProject, TReturnWithMetaData } from "@/src/types";
 import Link from "next/link";
 import { projects } from "../../data";
 import MotionElement from "../../motionDiv/MotionElement";
 import CommonButton from "../../shared/CommonButton";
 import ProjectCart from "../projects/ProjectCart";
+import envConfig from "@/src/config/envConfig";
 
-export default function Projects({ className }: TClassName) {
-  // Top 3 products
-  projects.sort((a, b) => a.order - b.order);
+export default async function Projects({ className }: TClassName) {
+  const response = await fetch(
+    `${envConfig?.baseAPI}/project?sort=order&limit=4`,
+    {
+      next: { revalidate: 120 },
+    }
+  );
+  const allProjectsData = (await response.json()) as TReturnWithMetaData<
+    TProject[]
+  >;
+  const allProjects = allProjectsData?.data?.data;
+
   return (
     <section className={`py-24 ${className}`} id="projects">
       <div className="container mx-auto px-4">
@@ -23,7 +33,7 @@ export default function Projects({ className }: TClassName) {
         </MotionElement>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {allProjects.map((project, index) => (
             <ProjectCart index={index} project={project} key={index} />
           ))}
         </div>

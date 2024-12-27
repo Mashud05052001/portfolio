@@ -1,10 +1,8 @@
 import { contactInfo } from "@/src/components/data";
 import { TClassName } from "@/src/types";
-import { Github, Linkedin } from "lucide-react";
 import MotionElement from "../../motionDiv/MotionElement";
-import ContactForm from "./ContactForm";
-import { siteConfig } from "@/src/config/site";
 import ContactButtons from "./ContactButtons";
+import ContactForm from "./ContactForm";
 
 export default function Contact({ className }: TClassName) {
   return (

@@ -1,30 +1,16 @@
-import { motion } from "framer-motion";
-
-import { TClassName } from "@/src/types";
 import TimelineItem from "@/src/components/comps/TimeLineItem";
-import MotionDiv from "../../motionDiv/MotionDiv";
+import { TClassName, TEducation, TReturnWithMetaData } from "@/src/types";
 import MotionElement from "../../motionDiv/MotionElement";
+import envConfig from "@/src/config/envConfig";
 
-const educationData = [
-  {
-    order: 2,
-    startDate: "2018",
-    endDate: "2020",
-    term: "HSC",
-    institute: "MC College, Sylhet",
-    description: "",
-  },
-  {
-    order: 1,
-    startDate: "2021",
-    endDate: "Present",
-    term: "Bachelor of Computer Science & Engineering",
-    institute: "Sylhet Engineering College",
-  },
-];
+export default async function Education({ className }: TClassName) {
+  const response = await fetch(`${envConfig?.baseAPI}/education?sort=order`, {
+    next: { revalidate: 120 },
+  });
+  const allEducationData = (await response.json()) as TReturnWithMetaData<
+    TEducation[]
+  >;
 
-export default function Education({ className }: TClassName) {
-  educationData.sort((a, b) => a.order - b.order);
   return (
     <div className={`py-24 ${className} `} id="education">
       <div className="container mx-auto px-4">
@@ -42,10 +28,9 @@ export default function Education({ className }: TClassName) {
             My academic journey and professional certifications
           </p>
         </MotionElement>
-
         <div className="max-w-3xl mx-auto">
-          {educationData.map((item, index) => (
-            <TimelineItem key={index} index={index} {...item} />
+          {allEducationData?.data?.data?.map((item, index) => (
+            <TimelineItem key={index} index={index} education={item} />
           ))}
         </div>
       </div>

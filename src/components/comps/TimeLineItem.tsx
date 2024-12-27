@@ -1,23 +1,13 @@
-import MotionDiv from "../motionDiv/MotionDiv";
+import { TEducation } from "@/src/types";
 import MotionElement from "../motionDiv/MotionElement";
+import moment from "moment";
 
-interface TimelineItemProps {
+type TProps = {
+  education: TEducation;
   index: number;
-  startDate: string;
-  endDate: string;
-  term: string;
-  institute: string;
-  description?: string;
-}
+};
 
-export default function TimelineItem({
-  startDate,
-  endDate,
-  term,
-  institute,
-  index,
-  description,
-}: TimelineItemProps) {
+export default function TimelineItem({ education, index }: TProps) {
   return (
     <MotionElement
       initial={{ opacity: 0, y: 20 }}
@@ -31,9 +21,15 @@ export default function TimelineItem({
 
       {/* Date */}
       <div className="w-32 pt-1 text-sm text-gray-600 dark:text-gray-300">
-        <span>{startDate}</span>
+        <span>{moment(education?.startDate).format("MM/YYYY")}</span>
         <span className="mx-1">-</span>
-        <span>{endDate}</span>
+        <span>
+          {education?.endDate ? (
+            moment(education?.endDate).format("MM/YYYY")
+          ) : (
+            <>Running</>
+          )}
+        </span>
       </div>
 
       {/* Timeline dot */}
@@ -51,16 +47,16 @@ export default function TimelineItem({
       {/* Content */}
       <div className="flex-1 pb-8">
         <h3 className="sm:text-xl font-bold text-gray-900 dark:text-white mb-1">
-          {term}
+          {education?.course}
         </h3>
         <h4 className="text-sm sm:text-lg text-blue-600 dark:text-blue-400 mb-2">
-          {institute}
+          {education?.institution}
         </h4>
-        {description && (
+        {/* {description && (
           <p className="text-sm md:text-base text-gray-600 dark:text-gray-300">
             {description}
           </p>
-        )}
+        )} */}
       </div>
     </MotionElement>
   );

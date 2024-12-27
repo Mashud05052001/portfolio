@@ -1,12 +1,11 @@
 import "@/src/styles/globals.css";
-import { Metadata, Viewport } from "next";
-import { Link } from "@nextui-org/link";
 import clsx from "clsx";
+import { Metadata, Viewport } from "next";
 
 import { Providers } from "./providers";
 
-import { siteConfig } from "@/src/config/site";
 import { fontSans } from "@/src/config/fonts";
+import { siteConfig } from "@/src/config/site";
 import { Navbar } from "../components/shared/Navbar";
 import ScrollToTop from "../components/shared/ScrollToTop";
 

@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowBigUp, Scale } from "lucide-react";
+import { ArrowBigUp } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);

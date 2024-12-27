@@ -1,10 +1,7 @@
 "use client";
 
 import { siteConfig } from "@/src/config/site";
-import websiteLogo from "../../../public/logo.png";
-import websiteLogo1 from "../../../public/logo1.png";
 import {
-  NavbarBrand,
   NavbarContent,
   NavbarItem,
   NavbarMenu,
@@ -12,11 +9,10 @@ import {
   Navbar as NextUINavbar,
 } from "@nextui-org/navbar";
 import { useState } from "react";
-import { ThemeSwitch } from "../theme-switch";
-import NavLink from "./NavLink";
 import MotionDiv from "../motionDiv/MotionDiv";
-import Image from "next/image";
+import { ThemeSwitch } from "../theme-switch";
 import NavbarLogo from "./NavbarLogo";
+import NavLink from "./NavLink";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

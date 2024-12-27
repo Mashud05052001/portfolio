@@ -9,10 +9,10 @@ type TProps = {
   index?: number;
 };
 
-export const BlogCard = ({ blog, index }: TProps) => {
+export const BlogCard = ({ blog }: TProps) => {
   return (
     <MotionElement
-      key={blog?.id}
+      key={blog?._id}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -20,13 +20,13 @@ export const BlogCard = ({ blog, index }: TProps) => {
       className="rounded-lg overflow-hidden shadow-lg dark:shadow-md dark:shadow-slate-700"
     >
       <div className=" border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden flex">
-        <div className="w-1/3 h-full">
+        <div className="w-1/3 h-full relative">
           <Image
             src={blog?.image}
             alt={blog?.title}
             width={1000}
             height={1000}
-            className="w-full h-full object-cover"
+            className="w-full h-60 object-cover bg-red-200"
           />
         </div>
         <div className="p-6 flex-1 flex flex-col justify-around ">
@@ -43,7 +43,7 @@ export const BlogCard = ({ blog, index }: TProps) => {
           </div>
           <Link
             className="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
-            href={`/blogs/${blog?.id}`}
+            href={`/blogs/${blog?._id}`}
           >
             <span className="mr-2 text-sm sm:text-base">Read more</span>
             <ArrowRight className="h-5 w-5" />

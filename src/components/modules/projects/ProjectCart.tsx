@@ -12,7 +12,7 @@ type TProps = {
 export default function ProjectCart({ project }: TProps) {
   return (
     <MotionElement
-      key={project?.id}
+      key={project?._id}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -31,7 +31,7 @@ export default function ProjectCart({ project }: TProps) {
       <div className="p-6">
         <Link
           className="sm:text-xl font-medium text-gray-900 dark:text-white hover:text-blue-600 duration-100"
-          href={`/projects/${project?.id}`}
+          href={`/projects/${project?._id}`}
         >
           {project?.title}
         </Link>

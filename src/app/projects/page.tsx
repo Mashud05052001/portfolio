@@ -1,10 +1,20 @@
-import { projects } from "@/src/components/data";
 import ProjectVerticalCard from "@/src/components/modules/projects/ProjectVerticalCard";
 import MotionElement from "@/src/components/motionDiv/MotionElement";
+import envConfig from "@/src/config/envConfig";
+import { TProject, TReturnWithMetaData } from "@/src/types";
 import { UndoDot } from "lucide-react";
 import Link from "next/link";
 
-export default function Page() {
+export default async function Page() {
+  const response = await fetch(`${envConfig?.baseAPI}/project?sort=order`, {
+    next: { revalidate: 120 },
+  });
+
+  const allProjectsData = (await response.json()) as TReturnWithMetaData<
+    TProject[]
+  >;
+  const allProjects = allProjectsData?.data?.data;
+
   return (
     <section className={`my-10`}>
       <div className=" mx-auto px-4">
@@ -29,7 +39,7 @@ export default function Page() {
         </MotionElement>
 
         <div className="grid grid-cols-1 gap-10">
-          {projects.map((project, index) => (
+          {allProjects.map((project, index) => (
             <ProjectVerticalCard index={index} project={project} key={index} />
           ))}
         </div>

@@ -1,9 +1,18 @@
-import { TClassName } from "@/src/types";
+import { TClassName, TReturnWithMetaData, TSkillData } from "@/src/types";
 import { Avatar } from "@nextui-org/avatar";
 import { skills } from "../../data";
 import MotionElement from "../../motionDiv/MotionElement";
+import envConfig from "@/src/config/envConfig";
 
-export default function Skills({ className }: TClassName) {
+export default async function Skills({ className }: TClassName) {
+  const response = await fetch(`${envConfig?.baseAPI}/skill?sort=order`, {
+    next: { revalidate: 120 },
+  });
+  const allSkillsData = (await response.json()) as TReturnWithMetaData<
+    TSkillData[]
+  >;
+  const allSkills = allSkillsData?.data?.data;
+  console.log(allSkills);
   const skillsData = skills;
   return (
     <section className={`py-24 ${className}`} id="skills">

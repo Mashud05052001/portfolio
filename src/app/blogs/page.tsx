@@ -1,10 +1,17 @@
-import { blogs } from "@/src/components/data";
 import { BlogCardForBlogsPage } from "@/src/components/modules/blogs/BlogCardForBlogsPage";
 import MotionElement from "@/src/components/motionDiv/MotionElement";
+import envConfig from "@/src/config/envConfig";
+import { TBlog, TReturnWithMetaData } from "@/src/types";
 import { UndoDot } from "lucide-react";
 import Link from "next/link";
 
-export default function Page() {
+export default async function Page() {
+  const response = await fetch(`${envConfig?.baseAPI}/blog?sort=order`, {
+    next: { revalidate: 120 },
+  });
+  const allBlogsData = (await response.json()) as TReturnWithMetaData<TBlog[]>;
+  const allBlogs = allBlogsData?.data?.data;
+
   return (
     <section className={`my-10`}>
       <div className=" mx-auto px-4">
@@ -29,7 +36,7 @@ export default function Page() {
         </MotionElement>
 
         <div className="grid grid-cols-1 gap-10">
-          {blogs.map((blog, index) => (
+          {allBlogs.map((blog, index) => (
             <BlogCardForBlogsPage blog={blog} key={index} />
           ))}
         </div>

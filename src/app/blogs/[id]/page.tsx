@@ -5,18 +5,21 @@ import HtmlDescription from "@/src/components/shared/HtmlDescription";
 import { UndoDot } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { PageProps } from "../../../../.next/types/app/page";
+import envConfig from "@/src/config/envConfig";
+import { TBlog, TReturnData } from "@/src/types";
 
-type TProps = {
-  params: { id: string };
-};
-
-export default async function SingleBlog({ params }: TProps) {
+export default async function SingleBlog({ params }: PageProps) {
   const { id: blogId } = await params;
+  const response = await fetch(`${envConfig?.baseAPI}/blog/${blogId}`, {
+    next: { revalidate: 120 },
+  });
+  const response2 = (await response.json()) as TReturnData<TBlog>;
 
-  const blogData = blogs.find((blog) => blog?.id === blogId);
-  if (!blogData) {
+  if (!response2?.success) {
     return <BlogNotFound />;
   }
+  const blogData = response2?.data;
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 ">
       {/* Image Section */}

@@ -1,13 +1,22 @@
-import { TClassName } from "@/src/types";
+import { TBlog, TClassName, TReturnWithMetaData } from "@/src/types";
 import Link from "next/link";
 import { blogs } from "../../data";
 import MotionElement from "../../motionDiv/MotionElement";
 import CommonButton from "../../shared/CommonButton";
 import { BlogCard } from "../blogs/BlogCard";
+import envConfig from "@/src/config/envConfig";
 
-export default function Blogs({ className }: TClassName) {
-  // Top 3 products
+export default async function Blogs({ className }: TClassName) {
+  const response = await fetch(
+    `${envConfig?.baseAPI}/blog?sort=order&limit=3`,
+    {
+      next: { revalidate: 120 },
+    }
+  );
+  const allBlogsData = (await response.json()) as TReturnWithMetaData<TBlog[]>;
+  const allBlogs = allBlogsData?.data?.data;
   blogs.sort((a, b) => a.order - b.order);
+
   return (
     <section className={`py-24 ${className}`} id="blogs">
       <div className="container mx-auto px-4">
@@ -22,8 +31,8 @@ export default function Blogs({ className }: TClassName) {
           My Blogs
         </MotionElement>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
-          {blogs.map((blog, index) => (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 ">
+          {allBlogs.map((blog, index) => (
             <BlogCard index={index} blog={blog} key={index} />
           ))}
         </div>

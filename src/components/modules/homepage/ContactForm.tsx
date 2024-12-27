@@ -14,7 +14,8 @@ import PButton from "../../form/PButton";
 
 export default function ContactForm() {
   const [loading, setLoading] = useState(false);
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  // const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async () => {
     setLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 2000));
     toast.success("Email send successfully");

@@ -1,26 +1,29 @@
-import { projects } from "@/src/components/data";
 import ProjectNotFound from "@/src/components/modules/projects/ProjectNotFound";
 import MotionElement from "@/src/components/motionDiv/MotionElement";
 import HtmlDescription from "@/src/components/shared/HtmlDescription";
+import envConfig from "@/src/config/envConfig";
+import { TProject, TReturnData } from "@/src/types";
 import { ExternalLink, Github, UndoDot } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { PageProps } from "../../../../.next/types/app/page";
 
-type TProps = {
-  params: { id: string };
-};
-
-export default async function SingleProject({ params }: TProps) {
+export default async function SingleProject({ params }: PageProps) {
   const { id: projectId } = await params;
-  const projectData = projects?.find((project) => project?.id === projectId);
+  const response = await fetch(`${envConfig?.baseAPI}/project/${projectId}`, {
+    next: { revalidate: 120 },
+  });
 
-  if (!projectData) {
+  const response2 = (await response.json()) as TReturnData<TProject>;
+
+  if (!response2) {
     return <ProjectNotFound />;
   }
+  const projectData = response2?.data;
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 ">
+    <div className="max-w-4xl mx-auto px-4 py-8 rounded-lg">
       {/* Project Image with Title and Category Overlay */}
-      <div className="relative h-64 md:h-96 w-full mb-6">
+      <div className="relative h-64 md:h-96 w-full mb-6 rounded-lg">
         <Image
           src={projectData?.image}
           alt={projectData?.title}
@@ -28,7 +31,7 @@ export default async function SingleProject({ params }: TProps) {
           layout="fill"
         />
         {/* Title */}
-        <div className="absolute inset-0 bg-black bg-opacity-50 text-center text-white px-4">
+        <div className="absolute inset-0 bg-black rounded-lg bg-opacity-50 text-center text-white px-4">
           <div className="absolute bottom-10 left-4 text-start">
             <h1 className="text-3xl md:text-4xl font-bold">
               {projectData?.title}
